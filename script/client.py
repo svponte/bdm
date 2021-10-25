@@ -1,3 +1,4 @@
+import os
 import sys
 import argparse
 from uuid import uuid4
@@ -83,6 +84,8 @@ class CassandraBenchamarking:
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
         logger.debug("Appending to output file")
+        if 'outputs' not in os.listdir():
+            os.mkdir('./outputs')
         with open(csv_filepath, 'a') as f:
             time_df.to_csv(f, header=f.tell() == 0)
 
