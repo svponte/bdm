@@ -47,6 +47,7 @@ class CassandraBenchamarking:
         return df['query'].values
 
     def run_tests(self, query_list: list, n_iterations: int):
+        test_starting_time = time()
         unique_str = uuid4()
         logger.info(f"Running tests - {unique_str}")
 
@@ -79,7 +80,9 @@ class CassandraBenchamarking:
             # Appending query times to CSV file
             self.append_time_df_to_csv(
                 df, f'./outputs/output_{unique_str}.csv')
-        logger.info("Test done")
+        
+        test_ending_time = time() - test_starting_time
+        logger.info(f"Test done in {test_ending_time} seconds")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
