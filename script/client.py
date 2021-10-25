@@ -3,6 +3,7 @@ import sys
 import argparse
 from uuid import uuid4
 from time import time
+import cassandra
 
 import pandas as pd
 from cassandra.cluster import Cluster, NoHostAvailable
@@ -20,7 +21,7 @@ class CassandraBenchamarking:
 
         self._session = None
         self._cluster = Cluster(cluster_ips)
-        
+
         try:
             self._session = self._cluster.connect(keyspace)
         except NoHostAvailable:
@@ -28,15 +29,17 @@ class CassandraBenchamarking:
             logger.error(message)
             raise ConnectionError(message)
         logger.info("Session connected")
-        
+
         if self._session:
             self._session.row_factory = tuple_factory
 
     def execute_query(self, query: str, verbose: bool = False):
         if verbose:
             logger.debug(f"Executing query: {query}")
-
-        result = self._session.execute(query)            
+        try:
+            result = self._session.execute(query)
+        except cassandra.InvalidRequest:
+            logger.error("Invalid query")
         if not result:
             logger.warning("Query returned with no results")
         return result
@@ -80,7 +83,7 @@ class CassandraBenchamarking:
             # Appending query times to CSV file
             self.append_time_df_to_csv(
                 df, f'./outputs/output_{unique_str}.csv')
-        
+
         test_ending_time = time() - test_starting_time
         logger.info(f"Test done in {test_ending_time} seconds")
 
