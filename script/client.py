@@ -4,7 +4,7 @@ from uuid import uuid4
 from time import time
 
 import pandas as pd
-from cassandra.cluster import Cluster
+from cassandra.cluster import Cluster, NoHostAvailable
 from cassandra.query import tuple_factory
 from loguru import logger
 
@@ -17,15 +17,25 @@ class CassandraBenchamarking:
     def __init__(self, cluster_ips: list, keyspace: str):
         logger.info(f"Establishing connection to {cluster_ips} - {keyspace}")
 
-        self.cluster = Cluster(cluster_ips)
-        self.session = self.cluster.connect(keyspace)
+        self._session = None
+        self._cluster = Cluster(cluster_ips)
+        
+        try:
+            self._session = self._cluster.connect(keyspace)
+        except NoHostAvailable:
+            message = f"Host {cluster_ips} not available"
+            logger.error(message)
+            raise ConnectionError(message)
         logger.info("Session connected")
-        self.session.row_factory = tuple_factory
+        
+        if self._session:
+            self._session.row_factory = tuple_factory
 
     def execute_query(self, query: str, verbose: bool = False):
         if verbose:
             logger.debug(f"Executing query: {query}")
-        result = self.session.execute(query)
+
+        result = self._session.execute(query)            
         if not result:
             logger.warning("Query returned with no results")
         return result
@@ -80,7 +90,9 @@ class CassandraBenchamarking:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.session.shutdown()
+        if self._session:
+            self._session.shutdown()
+            self._session = None
         logger.info("Connection closed")
 
 
@@ -90,7 +102,6 @@ def parse_args(args: list):
     )
     parser.add_argument(
         '-CLUSTER_IPS',
-        type=list,
         nargs="+",
         help='Number of iterations for each query',
         default=['35.203.92.156']
