@@ -25,15 +25,13 @@ def tac():
 print ('# # Início # #')
 print(str(time() ))
 ################ Cria Keyspace
-KEYSPACE = "microdados"
+KEYSPACE = "microenem"
 session.set_keyspace(KEYSPACE)
 
 #tic()
 session = cluster.connect(KEYSPACE)
 session.row_factory = tuple_factory
-#rows = session.execute("SELECT CO_MUNICIPIO_PROVA, NU_ANO FROM enem WHERE CO_MUNICIPIO_PROVA = 3109006;")
-rows = session.execute("SELECT * FROM enem WHERE CO_MUNICIPIO_PROVA = 3109006;")
-#rows = session.execute("SELECT count(*) FROM enem ;")
+rows = session.execute("SELECT * FROM enem  limit 10;")
 print (rows[1])
 
 session.shutdown()
