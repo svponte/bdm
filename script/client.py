@@ -39,7 +39,9 @@ class CassandraBenchamarking:
         try:
             result = self._session.execute(query)
         except cassandra.InvalidRequest:
-            logger.error("Invalid query")
+            message = "Invalid query"
+            logger.error(message)
+            raise ValueError(message)
         if not result:
             logger.warning("Query returned with no results")
         return result
