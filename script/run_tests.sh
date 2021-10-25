@@ -1,1 +1,1 @@
-python client.py -N_ITER 10
+python client.py -N_ITER 3

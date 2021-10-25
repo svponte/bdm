@@ -1,5 +1,6 @@
 import sys
 import argparse
+from uuid import uuid4
 from time import time
 
 import pandas as pd
@@ -35,14 +36,17 @@ class CassandraBenchamarking:
         return df['query'].values
 
     def run_tests(self, query_list: list, n_iterations: int):
-        logger.info("Running tests")
+        unique_str = uuid4()
+        logger.info(f"Running tests - {unique_str}")
+
         # Running each query
         for i, query in enumerate(query_list):
             logger.debug(f"Running query {i+1}/{len(query_list)}")
             logger.debug(query)
 
+            iter_time_list = []
             # Running n_iterations for current query
-            for iter in range(1, n_iterations+1):
+            for iter in range(1, n_iterations + 1):
                 logging_message = f"Running iteration {iter}/{n_iterations}"
                 decimal_fraction = int(n_iterations / 10)
                 if n_iterations >= 10:
@@ -51,7 +55,26 @@ class CassandraBenchamarking:
                 else:
                     logger.debug(logging_message)
 
-                rows = self.execute_query(query)
+                # Logging execution time for iteration
+                start_time = time()
+                self.execute_query(query)
+                total_time = time() - start_time
+                iter_time_list.append(total_time)
+
+            # Creating temporary DataFrame
+            df = pd.DataFrame([iter_time_list], index=[i+1])
+            df['query'] = query
+
+            # Appending query times to CSV file
+            self.append_time_df_to_csv(
+                df, f'./outputs/output_{unique_str}.csv')
+        logger.info("Test done")
+
+    @staticmethod
+    def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
+        logger.debug("Appending to output file")
+        with open(csv_filepath, 'a') as f:
+            time_df.to_csv(f, header=f.tell() == 0)
 
     def __enter__(self):
         return self
