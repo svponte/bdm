@@ -65,41 +65,42 @@ class CassandraBenchamarking:
         unique_str = uuid4()
         logger.info(f"Running tests - {unique_str}")
 
-        # Running each query
-        for i, query in enumerate(query_list):
-            logger.debug(f"Running query {i+1}/{len(query_list)}")
-            logger.debug(query)
+        # Running n_iterations for current query
+        for iter in range(1, n_iterations + 1):
+            logging_message = f"Running iteration {iter}/{n_iterations}"
 
-            iter_time_list = []
-            # Running n_iterations for current query
-            for iter in range(1, n_iterations + 1):
-                logging_message = f"Running iteration {iter}/{n_iterations}"
-                decimal_fraction = int(n_iterations / 10)
-                if n_iterations >= 10:
-                    if iter % decimal_fraction == 0:
-                        logger.debug(logging_message)
-                else:
+            # Control log every 10th part of the iterations
+            decimal_fraction = int(n_iterations / 10)
+            if n_iterations >= 10:
+                if iter % decimal_fraction == 0:
                     logger.debug(logging_message)
+            else:
+                logger.debug(logging_message)
+
+            # Running each query
+            iter_time_list = []
+            for i, query in enumerate(query_list):
+                logger.debug(f"Running query {i+1}/{len(query_list)}")
+                logger.debug(query)
 
                 # Logging execution time for iteration
                 start_time = time()
                 result = self.execute_query(query)
-                if not result:
-                    iter_time_list = np.zeros(n_iterations)
-                    break
-                total_time = time() - start_time
+                total_time = 0.0
+                if result:
+                    total_time = time() - start_time
                 iter_time_list.append(total_time)
 
             # Creating temporary DataFrame
-            df = pd.DataFrame([iter_time_list], index=[i+1])
-            df['query'] = query
+            df = pd.DataFrame([iter_time_list],
+                              columns=query_list, index=[iter])
 
             # Appending query times to CSV file
             self.append_time_df_to_csv(
                 df, f'./outputs/output_{unique_str}.csv')
 
         test_ending_time = time() - test_starting_time
-        logger.info(f"Test done in {test_ending_time} seconds")
+        logger.info(f"Test {unique_str} done in {test_ending_time} seconds")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
