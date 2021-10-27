@@ -133,3 +133,4 @@ dmypy.json
 # User
 logs/
 outputs/
+*.csv

@@ -1,15 +1,15 @@
+import argparse
 import os
 import sys
-import argparse
-from uuid import uuid4
 from time import time
-import cassandra
+from uuid import uuid4
 
+import cassandra
+import numpy as np
 import pandas as pd
 from cassandra.cluster import Cluster, NoHostAvailable
 from cassandra.query import tuple_factory
 from loguru import logger
-
 
 logger.add('./logs/logger_info.log', level="INFO")
 logger.add('./logs/logger_debug.log', level="DEBUG")
@@ -42,6 +42,15 @@ class CassandraBenchamarking:
             message = "Invalid query"
             logger.error(message)
             raise ValueError(message)
+        except cassandra.OperationTimedOut:
+            message = "OperationTimedOut while executing query."
+            logger.error(message)
+            raise ValueError(message)
+        except cassandra.ReadFailure:
+            message = "ReadFailure while executing query."
+            logger.error(message)
+            raise ValueError(message)
+
         if not result:
             logger.warning("Query returned with no results")
         return result
@@ -74,7 +83,10 @@ class CassandraBenchamarking:
 
                 # Logging execution time for iteration
                 start_time = time()
-                self.execute_query(str(query))
+                result = self.execute_query(query)
+                if not result:
+                    iter_time_list = np.zeros(n_iterations)
+                    break
                 total_time = time() - start_time
                 iter_time_list.append(total_time)
 
@@ -149,5 +161,4 @@ if __name__ == '__main__':
 
     with CassandraBenchamarking(CLUSTER_IPS, KEYSPACE) as db:
         queries = db.get_query_from_csv(INPUT_CSV)
-
         db.run_tests(queries, N_ITER)
