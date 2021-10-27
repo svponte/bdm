@@ -23,19 +23,26 @@ def tac():
     print('Duração: {}hour:{}min:{}sec'.format(t_hour,t_min,t_sec))
 
 print ('# # Início # #')
-print(str(time() ))
+#print(str(time() ))
 ################ Cria Keyspace
-KEYSPACE = "microenem"
+KEYSPACE = "bdm"
+#KEYSPACE = "microdados"
 session.set_keyspace(KEYSPACE)
 
 #tic()
 session = cluster.connect(KEYSPACE)
 session.row_factory = tuple_factory
-rows = session.execute("SELECT * FROM enem  limit 10;")
-print (rows[1])
+#rows = session.execute("SELECT IN_AMPLIADA_24, ST_CONCLUSAO FROM ENEM WHERE TP_LINGUA = 1;")
+rows = session.execute("SELECT IN_AMPLIADA_24, ST_CONCLUSAO FROM ENEM WHERE nu_inscrical > 190000000000 AND NU_ANO = 2019 and tp_sexo = 1 limit 1;")
+#rows = session.execute("alter table <table_name> with GC_GRACE_SECONDS = <timeout>;")
+#rows = session.execute("alter table enem with GC_GRACE_SECONDS = 3600;")
+
+#rows = session.execute("UPDATE COLUMN FAMILY cf with GC_GRACE = 86400;")
+
+print (rows[0])
 
 session.shutdown()
 print ('# # FIM # #')
-print(str(time() ))
+#print(str(time() ))
 
 #tac()

@@ -9,8 +9,26 @@ Processed: 5513747 rows; Rate:     251 rows/s; Avg. rate:     162 rows/s
 5513747 rows imported from 1 files in 9 hours, 27 minutes, and 36.338 seconds (0 skipped).
 
 
-'/cassandra/csv/MICRODADOS_ENEM_2013_utf8.csv'
+FROM '/cassandra/csv/MICRODADOS_ENEM_2017_utf8.csv'
+Processed: 6731341 rows; Rate:     148 rows/s; Avg. rate:     165 rows/s/s
+6731341 rows imported from 1 files in 11 hours, 20 minutes, and 46.205 seconds (0 skipped).
 
+FROM '/cassandra/csv/microdados_enem_2016_utf8.csv'
+Processed: 8627367 rows; Rate:     102 rows/s; Avg. rate:     144 rows/s
+8627367 rows imported from 1 files in 16 hours, 36 minutes, and 44.260 seconds (0 skipped).
+
+
+FROM '/cassandra/csv/MICRODADOS_ENEM_2015_utf8.csv'
+Failed to import 1 rows: ParseError - Invalid row length 32 should be 166,  given up without retries
+Failed to process 1 rows; failed rows written to import_microenem_enem.err
+Processed: 5875473 rows; Rate:     210 rows/s; Avg. rate:     129 rows/s
+5875472 rows imported from 1 files in 12 hours, 39 minutes, and 47.591 seconds (0 skipped).
+
+FROM '/cassandra/csv/DADOS_ENEM_2012_utf-8_TT.csv'
+Processed: 5791065 rows; Rate:     251 rows/s; Avg. rate:     179 rows/s
+5791065 rows imported from 1 files in 8 hours, 59 minutes, and 24.121 seconds (0 skipped).
+
+'/cassandra/csv/MICRODADOS_ENEM_2013_utf8.csv'
 Failed to import 1 rows: ParseError - Invalid row length 40 should be 166,  given up without retries
 Failed to process 1 rows; failed rows written to import_microenem_enem.err
 Processed: 5726501 rows; Rate:     145 rows/s; Avg. rate:     152 rows/s
