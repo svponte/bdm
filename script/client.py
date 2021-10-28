@@ -102,7 +102,7 @@ class CassandraBenchamarking:
         test_ending_time = time() - test_starting_time
         logger.info(f"Test {unique_str} done in {test_ending_time} seconds")
         logger.info(
-            f"Total of {n_iterations} iterations with {len(query_list)} queries({null_counter} null) each")
+            f"Total of {n_iterations} iterations with {len(query_list)} queries ({null_counter} null) each")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
