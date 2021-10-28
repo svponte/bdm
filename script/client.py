@@ -5,7 +5,6 @@ from time import time
 from uuid import uuid4
 
 import cassandra
-import numpy as np
 import pandas as pd
 from cassandra.cluster import Cluster, NoHostAvailable
 from cassandra.query import tuple_factory
@@ -101,9 +100,9 @@ class CassandraBenchamarking:
                 df, f'./outputs/output_{unique_str}.csv')
 
         test_ending_time = time() - test_starting_time
+        logger.info(f"Test {unique_str} done in {test_ending_time} seconds")
         logger.info(
-            f"Test {unique_str} done in {test_ending_time} seconds - \
-                Total of {n_iterations} iterations with {len(query_list)} queries ({null_counter} null) each")
+            f"Total of {n_iterations} iterations with {len(query_list)} queries({null_counter} null) each")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
