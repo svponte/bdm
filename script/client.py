@@ -37,7 +37,7 @@ class CassandraBenchamarking:
         if verbose:
             logger.debug(f"Executing query: {query}")
         try:
-            result = self._session.execute(query, timeout)
+            result = self._session.execute(query, timeout=timeout)
         except cassandra.InvalidRequest:
             message = "Invalid query"
             logger.error(message)
