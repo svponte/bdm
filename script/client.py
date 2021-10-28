@@ -78,6 +78,7 @@ class CassandraBenchamarking:
                 logger.debug(logging_message)
 
             # Running each query
+            null_counter = 0
             iter_time_list = []
             for i, query in enumerate(query_list):
                 logger.debug(f"Running query {i+1}/{len(query_list)}")
@@ -86,6 +87,8 @@ class CassandraBenchamarking:
                 # Logging execution time for iteration
                 start_time = time()
                 result = self.execute_query(query)
+                if not result:
+                    null_counter += 1
                 total_time = time() - start_time
                 iter_time_list.append(total_time)
 
@@ -98,7 +101,8 @@ class CassandraBenchamarking:
                 df, f'./outputs/output_{unique_str}.csv')
 
         test_ending_time = time() - test_starting_time
-        logger.info(f"Test {unique_str} done in {test_ending_time} seconds")
+        logger.info(
+            f"Test {unique_str} done in {test_ending_time} seconds - Total of {len(query_list)} queries ({null_counter} null)")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
