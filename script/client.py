@@ -86,9 +86,7 @@ class CassandraBenchamarking:
                 # Logging execution time for iteration
                 start_time = time()
                 result = self.execute_query(query)
-                total_time = 0.0
-                if result:
-                    total_time = time() - start_time
+                total_time = time() - start_time
                 iter_time_list.append(total_time)
 
             # Creating temporary DataFrame
