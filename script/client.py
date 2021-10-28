@@ -33,11 +33,11 @@ class CassandraBenchamarking:
         if self._session:
             self._session.row_factory = tuple_factory
 
-    def execute_query(self, query: str, verbose: bool = False):
+    def execute_query(self, query: str, timeout: int = 20, verbose: bool = False):
         if verbose:
             logger.debug(f"Executing query: {query}")
         try:
-            result = self._session.execute(query)
+            result = self._session.execute(query, timeout)
         except cassandra.InvalidRequest:
             message = "Invalid query"
             logger.error(message)
