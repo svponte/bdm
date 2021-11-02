@@ -165,7 +165,7 @@ class CassandraBenchamarking:
             # Control log every 10th part of the queries
             decimal_fraction = int(n_queries / 10)
             if n_queries >= 10:
-                if iter % decimal_fraction == 0:
+                if i % decimal_fraction == 0:
                     logger.info(logging_msg)
             else:
                 logger.info(logging_msg)
@@ -179,7 +179,9 @@ class CassandraBenchamarking:
             iter_time_list.append(total_time)
 
         # Creating output DataFrame
-        df = pd.DataFrame([iter_time_list], index=query_list)
+        df = pd.DataFrame(iter_time_list, 
+                          index=query_list, 
+                          columns=['execution_time'])
 
         # Appending query times to CSV file
         df.to_csv(f'./outputs/output_{unique_str}.csv')
