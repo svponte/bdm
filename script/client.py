@@ -154,13 +154,13 @@ class CassandraBenchamarking:
 
         test_starting_time = time()
         unique_str = uuid4()
-        logger.info(f"Running tests - {unique_str}")
+        logger.info(f"Running tests - {unique_str} - {n_queries} queries")
 
         # Running each query
         null_counter = 0
         iter_time_list = []
         for i, query in enumerate(query_list):
-            logging_msg = f"Running query {i+1}/{n_queries}"
+            logging_msg = f"Running query {i}/{n_queries}"
 
             # Control log every 10th part of the queries
             decimal_fraction = int(n_queries / 10)
