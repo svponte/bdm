@@ -1,4 +1,0 @@
-query
-"SELECT * FROM enem limit 10;"
-"SELECT * FROM enem limit 11;"
-"SELECT * FROM enem limit 12;"

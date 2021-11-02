@@ -1,0 +1,64 @@
+2021-11-02 21:57:18.530 | INFO     | __main__:__init__:28 - Establishing connection to ['10.142.0.4'] - bdm19181716
+2021-11-02 21:57:18.577 | INFO     | __main__:__init__:39 - Session connected
+2021-11-02 21:57:18.599 | INFO     | __main__:run_tests_queries:157 - Running tests - 9461042f-de2d-4603-b647-f21ffdc0c888 - 10000 queries
+2021-11-02 21:57:18.599 | INFO     | __main__:run_tests_queries:169 - Running query 0/10000
+2021-11-02 21:57:20.516 | INFO     | __main__:run_tests_queries:169 - Running query 1000/10000
+2021-11-02 21:57:22.369 | INFO     | __main__:run_tests_queries:169 - Running query 2000/10000
+2021-11-02 21:57:24.212 | INFO     | __main__:run_tests_queries:169 - Running query 3000/10000
+2021-11-02 21:57:25.988 | INFO     | __main__:run_tests_queries:169 - Running query 4000/10000
+2021-11-02 21:57:27.803 | INFO     | __main__:run_tests_queries:169 - Running query 5000/10000
+2021-11-02 21:57:29.606 | INFO     | __main__:run_tests_queries:169 - Running query 6000/10000
+2021-11-02 21:57:31.406 | INFO     | __main__:run_tests_queries:169 - Running query 7000/10000
+2021-11-02 21:57:33.220 | INFO     | __main__:run_tests_queries:169 - Running query 8000/10000
+2021-11-02 21:57:34.987 | INFO     | __main__:run_tests_queries:169 - Running query 9000/10000
+2021-11-02 21:57:36.799 | INFO     | __main__:run_tests_queries:191 - Test 9461042f-de2d-4603-b647-f21ffdc0c888 done in 18.20037865638733 seconds
+2021-11-02 21:57:36.799 | INFO     | __main__:run_tests_queries:192 - Total of 10000 queries (0 null) each
+2021-11-02 21:57:36.800 | INFO     | __main__:__exit__:217 - Connection closed
+2021-11-02 21:58:41.540 | INFO     | __main__:__init__:28 - Establishing connection to ['10.142.0.4'] - bdm19
+2021-11-02 21:58:41.588 | INFO     | __main__:__init__:39 - Session connected
+2021-11-02 21:58:41.611 | INFO     | __main__:run_tests_queries:157 - Running tests - aa842107-5bd6-469e-b32f-155d4e1043c5 - 10000 queries
+2021-11-02 21:58:41.611 | INFO     | __main__:run_tests_queries:169 - Running query 0/10000
+2021-11-02 21:58:43.380 | INFO     | __main__:run_tests_queries:169 - Running query 1000/10000
+2021-11-02 21:58:45.090 | INFO     | __main__:run_tests_queries:169 - Running query 2000/10000
+2021-11-02 21:58:46.852 | INFO     | __main__:run_tests_queries:169 - Running query 3000/10000
+2021-11-02 21:58:48.609 | INFO     | __main__:run_tests_queries:169 - Running query 4000/10000
+2021-11-02 21:58:50.383 | INFO     | __main__:run_tests_queries:169 - Running query 5000/10000
+2021-11-02 21:58:52.175 | INFO     | __main__:run_tests_queries:169 - Running query 6000/10000
+2021-11-02 21:58:53.918 | INFO     | __main__:run_tests_queries:169 - Running query 7000/10000
+2021-11-02 21:58:55.692 | INFO     | __main__:run_tests_queries:169 - Running query 8000/10000
+2021-11-02 21:58:57.460 | INFO     | __main__:run_tests_queries:169 - Running query 9000/10000
+2021-11-02 21:58:59.198 | INFO     | __main__:run_tests_queries:191 - Test aa842107-5bd6-469e-b32f-155d4e1043c5 done in 17.587059497833252 seconds
+2021-11-02 21:58:59.198 | INFO     | __main__:run_tests_queries:192 - Total of 10000 queries (0 null) each
+2021-11-02 21:58:59.199 | INFO     | __main__:__exit__:217 - Connection closed
+2021-11-02 22:00:45.608 | INFO     | __main__:__init__:28 - Establishing connection to ['10.142.0.4'] - bdm1918
+2021-11-02 22:00:45.668 | INFO     | __main__:__init__:39 - Session connected
+2021-11-02 22:00:45.689 | INFO     | __main__:run_tests_queries:157 - Running tests - 74a7296e-ec1f-4a33-a171-19e9f8717298 - 10000 queries
+2021-11-02 22:00:45.690 | INFO     | __main__:run_tests_queries:169 - Running query 0/10000
+2021-11-02 22:00:47.561 | INFO     | __main__:run_tests_queries:169 - Running query 1000/10000
+2021-11-02 22:00:49.373 | INFO     | __main__:run_tests_queries:169 - Running query 2000/10000
+2021-11-02 22:00:51.250 | INFO     | __main__:run_tests_queries:169 - Running query 3000/10000
+2021-11-02 22:00:53.023 | INFO     | __main__:run_tests_queries:169 - Running query 4000/10000
+2021-11-02 22:00:54.807 | INFO     | __main__:run_tests_queries:169 - Running query 5000/10000
+2021-11-02 22:00:56.598 | INFO     | __main__:run_tests_queries:169 - Running query 6000/10000
+2021-11-02 22:00:58.379 | INFO     | __main__:run_tests_queries:169 - Running query 7000/10000
+2021-11-02 22:01:00.182 | INFO     | __main__:run_tests_queries:169 - Running query 8000/10000
+2021-11-02 22:01:02.011 | INFO     | __main__:run_tests_queries:169 - Running query 9000/10000
+2021-11-02 22:01:03.898 | INFO     | __main__:run_tests_queries:191 - Test 74a7296e-ec1f-4a33-a171-19e9f8717298 done in 18.208967447280884 seconds
+2021-11-02 22:01:03.899 | INFO     | __main__:run_tests_queries:192 - Total of 10000 queries (0 null) each
+2021-11-02 22:01:03.899 | INFO     | __main__:__exit__:217 - Connection closed
+2021-11-02 22:01:20.866 | INFO     | __main__:__init__:28 - Establishing connection to ['10.142.0.4'] - bdm191817
+2021-11-02 22:01:20.912 | INFO     | __main__:__init__:39 - Session connected
+2021-11-02 22:01:20.932 | INFO     | __main__:run_tests_queries:157 - Running tests - 9abce30d-0f03-4c6d-887a-f6e7d00b985d - 10000 queries
+2021-11-02 22:01:20.932 | INFO     | __main__:run_tests_queries:169 - Running query 0/10000
+2021-11-02 22:01:22.788 | INFO     | __main__:run_tests_queries:169 - Running query 1000/10000
+2021-11-02 22:01:24.619 | INFO     | __main__:run_tests_queries:169 - Running query 2000/10000
+2021-11-02 22:01:26.518 | INFO     | __main__:run_tests_queries:169 - Running query 3000/10000
+2021-11-02 22:01:28.413 | INFO     | __main__:run_tests_queries:169 - Running query 4000/10000
+2021-11-02 22:01:30.312 | INFO     | __main__:run_tests_queries:169 - Running query 5000/10000
+2021-11-02 22:01:32.270 | INFO     | __main__:run_tests_queries:169 - Running query 6000/10000
+2021-11-02 22:01:34.128 | INFO     | __main__:run_tests_queries:169 - Running query 7000/10000
+2021-11-02 22:01:35.952 | INFO     | __main__:run_tests_queries:169 - Running query 8000/10000
+2021-11-02 22:01:37.935 | INFO     | __main__:run_tests_queries:169 - Running query 9000/10000
+2021-11-02 22:01:39.863 | INFO     | __main__:run_tests_queries:191 - Test 9abce30d-0f03-4c6d-887a-f6e7d00b985d done in 18.930830240249634 seconds
+2021-11-02 22:01:39.863 | INFO     | __main__:run_tests_queries:192 - Total of 10000 queries (0 null) each
+2021-11-02 22:01:39.864 | INFO     | __main__:__exit__:217 - Connection closed
