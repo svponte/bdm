@@ -24,7 +24,7 @@ class CassandraBenchamarking:
         :param keyspace: Keyspace to connect to
         :type keyspace: str
         :raises ConnectionError: If connection was not succesful
-        """        
+        """
         logger.info(f"Establishing connection to {cluster_ips} - {keyspace}")
 
         self._session = None
@@ -52,7 +52,7 @@ class CassandraBenchamarking:
         :type verbose: bool, optional
         :raises ValueError: If there was a problem to execute the query
         :return: Result object
-        """        
+        """
         if verbose:
             logger.debug(f"Executing query: {query}")
         try:
@@ -84,7 +84,7 @@ class CassandraBenchamarking:
         :type separator: str, optional
         :return: List of queries
         :rtype: np.array
-        """        
+        """
         df = pd.read_csv(csv_filepath, separator)
         return df['query'].values
 
@@ -97,7 +97,7 @@ class CassandraBenchamarking:
         :type query_list: list
         :param n_iterations: Number of times the query list is executed
         :type n_iterations: int
-        """        
+        """
         test_starting_time = time()
         unique_str = uuid4()
         logger.info(f"Running tests - {unique_str}")
@@ -149,9 +149,9 @@ class CassandraBenchamarking:
 
         :param query_list: Input query list to be executed once each
         :type query_list: list
-        """        
+        """
         n_queries = len(query_list)
-        
+
         test_starting_time = time()
         unique_str = uuid4()
         logger.info(f"Running tests - {unique_str}")
@@ -161,7 +161,7 @@ class CassandraBenchamarking:
         iter_time_list = []
         for i, query in enumerate(query_list):
             logging_msg = f"Running query {i+1}/{n_queries}"
-            
+
             # Control log every 10th part of the queries
             decimal_fraction = int(n_queries / 10)
             if n_queries >= 10:
@@ -198,7 +198,7 @@ class CassandraBenchamarking:
         :type time_df: pd.DataFrame
         :param csv_filepath: CSV file to append the input Dataframe
         :type csv_filepath: str
-        """        
+        """
         logger.debug("Appending to output file")
         if 'outputs' not in os.listdir():
             os.mkdir('./outputs')
@@ -243,6 +243,12 @@ def parse_args(args: list):
         help='CSV file for input queries',
         default='test.csv'
     )
+    parser.add_argument(
+        '-TEST_TYPE',
+        type=str,
+        help="Type of test to used: iteration ('iter') or query based ('query')",
+        default='query'
+    )
     args = parser.parse_args(args)
     return args
 
@@ -254,7 +260,14 @@ if __name__ == '__main__':
     KEYSPACE = args.KEYSPACE
     N_ITER = args.N_ITER
     INPUT_CSV = args.INPUT_CSV
+    TEST_TYPE = args.TEST_TYPE
 
     with CassandraBenchamarking(CLUSTER_IPS, KEYSPACE) as db:
         queries = db.get_query_from_csv(INPUT_CSV)
-        db.run_tests(queries, N_ITER)
+        if TEST_TYPE == 'iter':
+            db.run_tests_iterations(queries, N_ITER)
+        elif TEST_TYPE == 'query':
+            db.run_tests_queries(queries)
+        else:
+            msg = "Invalid test type. Choose either 'query' or 'iter'"
+            raise ValueError(msg)
