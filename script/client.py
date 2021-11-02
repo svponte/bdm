@@ -179,8 +179,8 @@ class CassandraBenchamarking:
             iter_time_list.append(total_time)
 
         # Creating output DataFrame
-        df = pd.DataFrame(iter_time_list, 
-                          index=query_list, 
+        df = pd.DataFrame(iter_time_list,
+                          index=query_list,
                           columns=['execution_time'])
 
         # Appending query times to CSV file
@@ -189,7 +189,7 @@ class CassandraBenchamarking:
         # Execution summary
         test_ending_time = time() - test_starting_time
         logger.info(f"Test {unique_str} done in {test_ending_time} seconds")
-        logger.info(f"Total of {n_queries} queries ({null_counter} null) each")
+        logger.info(f"Total of {n_queries} queries ({null_counter} null)")
 
     @staticmethod
     def append_time_df_to_csv(time_df: pd.DataFrame, csv_filepath: str):
