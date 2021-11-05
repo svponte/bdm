@@ -1,0 +1,27 @@
+create table lixo (
+co_escola int,co_municipio_esc int,co_municipio_nascimento int,co_municipio_prova int,co_municipio_residencia int,co_prova_ch int,
+co_prova_cn int,co_prova_lc int,co_prova_mt int,co_uf_entidade_certificacao text,co_uf_esc int,co_uf_nascimento int,
+co_uf_prova text,co_uf_residencia int,in_acesso int,in_ampliada_18 int,in_ampliada_24 int,in_apoio_perna int,in_autismo int,
+in_baixa_visao int,in_braille int,in_cadeira_acolchoada int,in_cadeira_canhoto int,in_cadeira_especial int,in_cegueira int,
+in_certificado int,in_computador int,in_deficiencia_auditiva int,in_deficiencia_fisica int,in_deficiencia_mental int,
+in_deficit_atencao int,in_discalculia int,in_dislexia int,in_estuda_classe_hospitalar int,in_gestante int,in_guia_interprete int,
+in_idoso int,in_lactante int,in_lamina_overlay int,in_ledor int,in_leitura_labial int,in_libras int, in_tempo_adicional int,in_maca int,in_maquina_braile int,
+in_marca_passo int,in_material_especifico int,in_medicamentos int,in_medidor_glicose int,in_mesa_cadeira_rodas int,
+in_mesa_cadeira_separada int,in_mobiliario_especifico int,in_mobiliario_obeso int,in_nome_social int,in_outra_def int,
+in_protetor_auricular int,in_prova_deitado int,in_sabatista int,in_sala_acompanhante int,in_sala_especial int,in_sala_individual int,
+in_sem_recurso int,in_sonda int,in_soroban int,in_surdez int,in_surdo_cegueira int,in_transcricao int,in_treineiro int,in_visao_monocular int,
+no_entidade_certificacao text,no_municipio_esc text,no_municipio_nascimento text,no_municipio_prova text,no_municipio_residencia text,
+nu_ano int,nu_idade int,nu_inscricao bigint,nu_nota_ch decimal,nu_nota_cn decimal,nu_nota_comp1 decimal,nu_nota_comp2 decimal,nu_nota_comp3 decimal,
+nu_nota_comp4 decimal,nu_nota_comp5 decimal,nu_nota_lc decimal,nu_nota_mt decimal,nu_nota_redacao decimal,
+q001 text,q002 text,q003 text,q004 text,q005 text,q006 text,q007 text,q008 text,q009 text,q010 text,q011 text,q012 text,q013 text,q014 text,
+q015 text,q016 text,q017 text,q018 text,q019 text,q020 text,q021 text,q022 text,q023 text,q024 text,q025 text,q026 text,q027 text,q028 text,
+q029 text,q030 text,q031 text,q032 text,q033 text,q034 text,q035 text,q036 text,q037 text,q038 text,q039 text,q040 text,q041 text,q042 text,
+q043 text,q044 text,q045 text,q046 text,q047 text,q048 text,q049 text,q050 text,
+sg_uf_entidade_certificacao text,sg_uf_esc text,sg_uf_nascimento text,sg_uf_prova text,sg_uf_residencia text,tp_ano_concluiu int,tp_cor_raca int,
+tp_dependencia_adm_esc int,tp_ensino int,tp_escola int,tp_estado_civil int,tp_lingua int,tp_localizacao_esc int,tp_nacionalidade int,
+tp_presenca_ch int,tp_presenca_cn int,tp_presenca_lc int,tp_presenca_mt int,tp_sexo text,tp_sit_func_esc int,tp_st_conclusao int,
+tp_status_redacao int,tx_gabarito_ch text,tx_gabarito_cn text,tx_gabarito_lc text,tx_gabarito_mt text,tx_respostas_ch text,tx_respostas_cn text,
+tx_respostas_lc text,tx_respostas_mt text,
+
+primary key ((nu_ano, nu_inscricao), co_municipio_prova, tp_sexo, tp_cor_raca)
+);
