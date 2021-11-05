@@ -24,12 +24,39 @@ Failed to process 1 rows; failed rows written to import_microenem_enem.err
 Processed: 5875473 rows; Rate:     210 rows/s; Avg. rate:     129 rows/s
 5875472 rows imported from 1 files in 12 hours, 39 minutes, and 47.591 seconds (0 skipped).
 
-FROM '/cassandra/csv/DADOS_ENEM_2012_utf-8_TT.csv'
-Processed: 5791065 rows; Rate:     251 rows/s; Avg. rate:     179 rows/s
-5791065 rows imported from 1 files in 8 hours, 59 minutes, and 24.121 seconds (0 skipped).
-
 '/cassandra/csv/MICRODADOS_ENEM_2013_utf8.csv'
 Failed to import 1 rows: ParseError - Invalid row length 40 should be 166,  given up without retries
 Failed to process 1 rows; failed rows written to import_microenem_enem.err
 Processed: 5726501 rows; Rate:     145 rows/s; Avg. rate:     152 rows/s
 5726500 rows imported from 1 files in 10 hours, 26 minutes, and 35.844 seconds (0 skipped).
+
+
+FROM '/cassandra/csv/DADOS_ENEM_2012_utf-8_TT.csv'
+Processed: 5791065 rows; Rate:     251 rows/s; Avg. rate:     179 rows/s
+5791065 rows imported from 1 files in 8 hours, 59 minutes, and 24.121 seconds (0 skipped).
+
+
+FROM '/cassandra/csv/MICRODADOS_ENEM_2010_utf-8.csv'
+Processed: 4290121 rows; Rate:     105 rows/s; Avg. rate:     134 rows/s
+4290120 rows imported from 1 files in 8 hours, 53 minutes, and 34.103 seconds (0 skipped).
+
+FROM '/cassandra/csv/MICRODADOS_ENEM_2009_utf-8.csv'
+Processed: 4148720 rows; Rate:      94 rows/s; Avg. rate:     103 rows/s
+4148720 rows imported from 1 files in 11 hours, 11 minutes, and 47.792 seconds (0 skipped).
+
+
+###############
+2018
+Failed to process 97 rows; failed rows written to import_bdm_enem.errs/s
+Processed: 5513747 rows; Rate:      86 rows/s; Avg. rate:      90 rows/s
+5513650 rows imported from 1 files in 16 hours, 56 minutes, and 46.450 seconds (0 skipped).
+
+2019
+Processed: 5095270 rows; Rate:     176 rows/s; Avg. rate:      93 rows/s
+5095201 rows imported from 1 files in 15 hours, 9 minutes, and 14.577 seconds (0 skipped).
+
+
+2018
+5513650 rows imported from 1 files in 16 hours, 56 minutes, and 46.450 seconds (0 skipped).
+2019
+5095201 rows imported from 1 files in 15 hours, 9 minutes, and 14.577 seconds (0 skipped).
