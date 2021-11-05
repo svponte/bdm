@@ -1,0 +1,1 @@
+python3 client.py -N_ITER 3 -CLUSTER_IPS 10.162.0.3
